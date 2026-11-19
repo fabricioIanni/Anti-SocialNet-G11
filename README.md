@@ -1,32 +1,45 @@
-# React + TypeScript + Vite
+# UnaHur Anti-Social Net
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Frontend de la red social "UnaHur Anti-Social Net", hecho para el TP2 de Construcción de Interfaces de Usuario. Está hecho con React, TypeScript y React Bootstrap, y usa la API del backend que dio la cátedra.
 
-Currently, two official plugins are available:
+Se puede ver las publicaciones, comentarlas, registrarse, iniciar sesión y crear publicaciones propias. El login es simulado: se busca el usuario en la API y la contraseña es siempre `123456`.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Cómo correrlo
 
-## React Compiler
+Primero hay que tener el backend andando:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```
+git clone https://github.com/lucasfigarola/backend-api
+cd backend-api
+npm install
+node seed.js
+npm start
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Queda corriendo en http://localhost:3001.
+
+Después, en otra terminal, desde la carpeta de este proyecto:
+
+```
+npm install
+npm run dev
+```
+
+Se abre en http://localhost:5173.
+
+## API
+
+Se usa la API en `http://localhost:3001` (repo: https://github.com/lucasfigarola/backend-api). Si hay que cambiar la URL, está en `src/constants/index.ts`.
+
+## Rutas
+
+- `/` inicio con las publicaciones
+- `/login` iniciar sesión
+- `/register` registrarse
+- `/post/:id` detalle de una publicación
+- `/profile` perfil (hay que estar logueado)
+- `/new-post` crear publicación (hay que estar logueado)
+
+## Tecnologías
+
+React, TypeScript, Vite, React Router, React Bootstrap y Axios.
